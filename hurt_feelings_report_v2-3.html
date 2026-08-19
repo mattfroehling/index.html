@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hurt Feelings Report — Department of Emotional Damage</title>
+<style>
+:root{--bg:#09090b;--card:#18181b;--card2:#27272a;--line:#3f3f46;--text:#fafafa;--muted:#a1a1aa;--red:#ef4444;--gold:#f59e0b;--green:#22c55e;--blue:#38bdf8}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% -10%,#4c0519,#09090b 45%);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;padding:14px}
+.wrap{max-width:1150px;margin:auto}.hero{text-align:center;padding:22px 8px 18px}.hero h1{font-size:clamp(2.2rem,8vw,5.6rem);line-height:.9;margin:0;font-weight:1000;letter-spacing:-.07em;text-shadow:0 5px 25px #000}.hero p{color:#fbbf24;font-weight:900;margin:16px 0 8px}.stamp{display:inline-block;border:2px solid #ef4444;color:#fca5a5;padding:6px 12px;border-radius:99px;font-size:.72rem;font-weight:900}
+.tabs{display:flex;gap:8px;overflow:auto;margin:8px 0 16px}.tabs button{white-space:nowrap}.tab.active{background:var(--red);color:#fff}
+button{border:0;border-radius:12px;padding:12px 15px;font-weight:950;cursor:pointer;background:var(--card2);color:#fff}.primary{background:var(--red);width:100%;font-size:1.05rem}.gold{background:var(--gold);color:#18181b}.green{background:var(--green);color:#052e16}.danger{background:#7f1d1d}
+.page{display:none}.page.active{display:block}.grid{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}.card{background:#18181bf2;border:1px solid var(--line);border-radius:20px;padding:19px;box-shadow:0 20px 50px #0006;margin-bottom:16px}
+h2{margin-top:0}label{display:block;font-weight:850;margin:13px 0 7px}input,select,textarea{width:100%;border:2px solid var(--line);background:#09090b;color:#fff;border-radius:11px;padding:12px;font:inherit}textarea{min-height:85px}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.stat{background:#09090b;border-radius:14px;text-align:center;padding:13px}.stat b{display:block;font-size:2rem;color:#f87171}.person{padding:12px;background:#09090b;border-radius:13px;margin:8px 0}.row{display:flex;justify-content:space-between;gap:10px;align-items:center}.bar{height:9px;background:#27272a;border-radius:99px;overflow:hidden;margin-top:8px}.fill{height:100%;background:linear-gradient(90deg,#22c55e,#f59e0b,#ef4444)}
+.report{background:#09090b;border-left:5px solid var(--red);padding:13px;border-radius:12px;margin:10px 0}.pill{display:inline-block;padding:4px 8px;border-radius:99px;background:#27272a;font-size:.72rem;margin:3px}.muted,.tiny{color:var(--muted);font-size:.82rem}.notice{background:#172554;border:1px solid #1d4ed8;padding:12px;border-radius:12px;margin-bottom:12px}.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.empty{text-align:center;color:var(--muted);padding:28px}.wall{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}.award{background:#09090b;border:1px solid var(--line);padding:16px;border-radius:15px;text-align:center}.award .emoji{font-size:2.2rem}.modal{position:fixed;inset:0;background:#000b;display:none;align-items:center;justify-content:center;padding:18px;z-index:10}.modal.show{display:flex}.modal .card{max-width:550px;width:100%;max-height:90vh;overflow:auto}
+@media(max-width:800px){.grid{grid-template-columns:1fr}.two{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero">
+<h1>🚨 HURT FEELINGS REPORT 🚨</h1>
+<p>OFFICIAL DEPARTMENT OF UNNECESSARY EMOTIONAL DAMAGE</p>
+<span class="stamp">FORM HR-LOL-69 • TOP SECRET(ISH) • ZERO TAX DEDUCTION VALUE</span>
+</header>
+
+<nav class="tabs">
+<button class="tab active" onclick="showPage('file',this)">📋 File Complaint</button>
+<button class="tab" onclick="showPage('dashboard',this)">📊 Dashboard</button>
+<button class="tab" onclick="showPage('history',this)">📁 History</button>
+<button class="tab" onclick="showPage('awards',this)">🏆 Awards</button>
+<button class="tab" onclick="showPage('admin',this)">🔐 HR Department</button>
+</nav>
+
+<section id="file" class="page active">
+<div class="grid">
+<div class="card">
+<h2>📋 Official Complaint Form</h2>
+<div id="connection" class="notice">🌐 <b>Shared Mode Ready:</b> this page supports a shared Supabase database. Until your Supabase credentials are added, it uses this device's storage.</div>
+<label>Who has the hurt feelings?</label><select id="victim"></select>
+<label>Who committed the alleged emotional crime?</label><select id="offender"></select>
+<div class="two">
+<div><label>Severity</label><select id="severity">
+<option value="1">1 — Barely a boo-boo</option><option value="2">2 — Mildly inconvenienced</option><option value="3" selected>3 — Pretty darn hurt</option><option value="4">4 — Need snacks immediately</option><option value="5">5 — Tell my mom</option><option value="6">6 — Never emotionally recover</option><option value="10">10 — Lawyer consulted</select></div>
+<div><label>Emotional damage type</label><select id="type">
+<option>Insult</option><option>Snack theft</option><option>Ignored text message</option><option>Bad joke</option><option>Unnecessary criticism</option><option>Being annoying</option><option>Workplace shenanigans</option><option>Other devastating event</select></div>
+</div>
+<label>What caused the hurt feelings?</label><textarea id="cause" placeholder="Example: He ate the last cookie and then claimed the cookie had never existed."></textarea>
+<div class="two">
+<div><label>Where?</label><input id="location" placeholder="Break room, garage, group chat..."></div>
+<div><label>When?</label><input id="when" type="datetime-local"></div>
+</div>
+<label>Witnesses</label><input id="witnesses" placeholder="Anyone brave enough to tell the truth">
+<label>Evidence</label><select id="evidence"><option>None — Trust me bro.</option><option>Text screenshot</option><option>Witness testimony</option><option>Security footage</option><option>Physical evidence</option><option>Extremely suspicious vibes</option><option>All of the above</option></select>
+<label>Desired corrective action</label><select id="action">
+<option>Mandatory apology with eye contact</option><option>Provide snacks as restitution</option><option>Buy the offended party a beverage</option><option>Publicly admit they were wrong</option><option>Write “I will think before I speak” 100 times</option><option>Replace the stolen/consumed item</option><option>Temporary suspension of being annoying</option><option>Full emotional reparations package</option><option>Committee will decide your fate</select>
+<button class="primary" onclick="submitReport()">🚨 SUBMIT OFFICIAL HURT FEELINGS REPORT 🚨</button>
+<p class="tiny">By submitting, you certify that your feelings were, in fact, hurt and that this complaint was not filed solely because you were bored.</p>
+</div>
+
+<div>
+<div class="card"><h2>📡 Live Status</h2><div class="stats"><div class="stat"><b id="total">0</b>Reports</div><div class="stat"><b id="points">0</b>Hurt Points</div></div><p class="muted" id="syncStatus">Checking database...</p></div>
+<div class="card"><h2>⚖️ Instant Verdict</h2><div id="verdict" class="report">Click below to let an entirely unqualified committee decide someone's fate.</div><button class="gold" onclick="generateVerdict()">⚖️ Issue Random HR Verdict</button></div>
+</div>
+</div>
+</section>
+
+<section id="dashboard" class="page">
+<div class="card"><h2>📊 Department Dashboard</h2><div id="leaderboard"></div></div>
+<div class="card"><h2>🔥 Incident Statistics</h2><div id="statsText"></div></div>
+</section>
+
+<section id="history" class="page">
+<div class="card"><h2>📁 Complete Hurt Feelings Archive</h2>
+<div class="two"><input id="search" placeholder="🔎 Search reports..." oninput="renderHistory()"><select id="filter" onchange="renderHistory()"><option value="">Everyone</option></select></div>
+<div id="historyList"></div></div>
+</section>
+
+<section id="awards" class="page">
+<div class="card"><h2>🏆 Annual-ish Awards</h2><div id="awards" class="wall"></div></div>
+</section>
+
+<section id="admin" class="page">
+<div class="card"><h2>🔐 HR Department</h2>
+<p class="muted">Use this area for administrative functions. In shared mode, destructive actions should be protected by your Supabase Row Level Security policies.</p>
+<div class="notice">⚠️ <b>Important:</b> this HTML is already structured for Supabase, but the database connection is intentionally left blank. Do not put a Supabase <b>service_role</b> key in this file. Only use the public anon key with proper database security policies.</div>
+<label>Supabase Project URL</label><input id="sbUrl" placeholder="https://your-project.supabase.co">
+<label>Supabase anon/public key</label><input id="sbKey" placeholder="eyJ...">
+<button class="green" onclick="saveConfig()">💾 Save Shared Database Settings</button>
+<button class="danger" onclick="clearLocal()" style="margin-top:10px">🗑️ Clear This Device's Local Data</button>
+<p class="tiny">Configuration is saved only in this browser. For a public group website, use Supabase RLS so the public key cannot perform unsafe operations.</p>
+</div>
+</section>
+
+<div class="modal" id="caseModal"><div class="card"><h2>📄 Case Details</h2><div id="caseBody"></div><button onclick="closeCase()">Close Case</button></div></div>
+</div>
+
+<script>
+const PEOPLE=["Vic Lochen","Bemis Froehling","Ryan Brown","A-Aron Brown","James Brauer"];
+const KEY="hurtFeelingsV2";
+let reports=JSON.parse(localStorage.getItem(KEY)||"[]");
+let config=JSON.parse(localStorage.getItem("hurtFeelingsConfig")||"{}");
+
+const $=id=>document.getElementById(id);
+PEOPLE.forEach(p=>{$("victim").add(new Option(p,p));$("offender").add(new Option(p,p));$("filter").add(new Option(p,p));});
+$("offender").selectedIndex=1;
+$("when").value=new Date(Date.now()-new Date().getTimezoneOffset()*60000).toISOString().slice(0,16);
+if(config.url&&config.key){$("sbUrl").value=config.url;$("sbKey").value=config.key;$("connection").innerHTML="🌐 <b>Shared Mode:</b> Supabase credentials saved. Click Save Shared Database Settings to test/connect."; }
+
+function showPage(id,btn){document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));$(id).classList.add("active");document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));btn.classList.add("active");render();}
+function saveLocal(){localStorage.setItem(KEY,JSON.stringify(reports));}
+function submitReport(){
+ let v=$("victim").value,o=$("offender").value,c=$("cause").value.trim();
+ if(v===o)return alert("🚨 REPORT REJECTED: You cannot be both victim and suspect. Nice try.");
+ if(!c)return alert("🚨 REPORT REJECTED: Please describe the devastating event.");
+ const r={id:crypto.randomUUID?crypto.randomUUID():Date.now().toString(),victim:v,offender:o,severity:+$("severity").value,type:$("type").value,cause:c,location:$("location").value||"Classified",when:$("when").value||new Date().toISOString(),witnesses:$("witnesses").value||"None brave enough",evidence:$("evidence").value,action:$("action").value,created:new Date().toISOString()};
+ reports.unshift(r);saveLocal();render();
+ $("cause").value="";$("location").value="";$("witnesses").value="";
+ alert("✅ COMPLAINT ACCEPTED.\n\nYour feelings have been forwarded to the Department of Overreaction.");
+}
+function render(){
+ let counts=Object.fromEntries(PEOPLE.map(p=>[p,0])),off=Object.fromEntries(PEOPLE.map(p=>[p,0])),pts=0;
+ reports.forEach(r=>{counts[r.victim]+=+r.severity;off[r.offender]++;pts+=+r.severity});
+ $("total").textContent=reports.length;$("points").textContent=pts;
+ const max=Math.max(1,...Object.values(counts));
+ $("leaderboard").innerHTML=PEOPLE.map(p=>`<div class="person"><div class="row"><b>${esc(p)}</b><strong>${counts[p]} HP</strong></div><div class="bar"><div class="fill" style="width:${counts[p]/max*100}%"></div></div><span class="muted">${reports.filter(r=>r.victim===p).length} complaints filed</span></div>`).join("");
+ const mostHurt=PEOPLE.reduce((a,b)=>counts[b]>counts[a]?b:a,PEOPLE[0]);
+ const worstOffender=PEOPLE.reduce((a,b)=>off[b]>off[a]?b:a,PEOPLE[0]);
+ $("statsText").innerHTML=reports.length?`<p>💔 <b>Most Offended:</b> ${esc(mostHurt)} (${counts[mostHurt]} HP)</p><p>😈 <b>Repeat Offender:</b> ${esc(worstOffender)} (${off[worstOffender]} allegations)</p><p>📈 <b>Average Emotional Damage:</b> ${(pts/reports.length).toFixed(1)} HP/report</p>`:"<div class='empty'>No data. Everyone is suspiciously well-adjusted.</div>";
+ renderHistory();renderAwards();
+ $("syncStatus").textContent=config.url&&config.key?"🌐 Shared database configured — local fallback active until the Supabase table is connected.":"💾 Local mode — reports are currently visible only on this device.";
+}
+function renderHistory(){
+ let q=($("search").value||"").toLowerCase(),f=$("filter").value;
+ let list=reports.filter(r=>(!f||r.victim===f)&&JSON.stringify(r).toLowerCase().includes(q));
+ $("historyList").innerHTML=list.length?list.map((r,i)=>`<div class="report"><div class="row"><b>CASE #${String(reports.indexOf(r)+1).padStart(4,"0")}</b><span class="pill">💔 ${r.severity}/10</span></div><p><b>${esc(r.victim)}</b> says <b>${esc(r.offender)}</b> caused emotional damage.</p><p>${esc(r.cause)}</p><span class="pill">${esc(r.type)}</span><span class="pill">📍 ${esc(r.location)}</span><span class="pill">🔎 ${esc(r.evidence)}</span><br><button onclick="viewCase('${r.id}')" style="margin-top:8px">View Full Case</button></div>`).join(""):"<div class='empty'>No matching cases. Feelings remain unaccounted for.</div>";
+}
+function viewCase(id){let r=reports.find(x=>x.id===id);if(!r)return;$("caseBody").innerHTML=`<p><b>Victim:</b> ${esc(r.victim)}</p><p><b>Suspect:</b> ${esc(r.offender)}</p><p><b>Severity:</b> ${r.severity}/10</p><p><b>Type:</b> ${esc(r.type)}</p><p><b>Cause:</b> ${esc(r.cause)}</p><p><b>Location:</b> ${esc(r.location)}</p><p><b>Witnesses:</b> ${esc(r.witnesses)}</p><p><b>Evidence:</b> ${esc(r.evidence)}</p><p><b>Corrective action:</b> ${esc(r.action)}</p><p><b>Filed:</b> ${new Date(r.created).toLocaleString()}</p>`;$("caseModal").classList.add("show")}
+function closeCase(){$("caseModal").classList.remove("show")}
+function renderAwards(){
+ let counts=Object.fromEntries(PEOPLE.map(p=>[p,0])),off=Object.fromEntries(PEOPLE.map(p=>[p,0]));
+ reports.forEach(r=>{counts[r.victim]+=+r.severity;off[r.offender]++});
+ let hurt=PEOPLE.reduce((a,b)=>counts[b]>counts[a]?b:a,PEOPLE[0]), menace=PEOPLE.reduce((a,b)=>off[b]>off[a]?b:a,PEOPLE[0]);
+ let newest=reports[0]?.victim||"Nobody";
+ $("awards").innerHTML=`<div class="award"><div class="emoji">🏆</div><b>Most Offended</b><p>${esc(hurt)}</p><span>${counts[hurt]} Hurt Points</span></div>
+ <div class="award"><div class="emoji">😈</div><b>Repeat Offender</b><p>${esc(menace)}</p><span>${off[menace]} allegations</span></div>
+ <div class="award"><div class="emoji">🚨</div><b>Latest Victim</b><p>${esc(newest)}</p><span>Thoughts & prayers</span></div>
+ <div class="award"><div class="emoji">🧻</div><b>Emotional Support Tissue</b><p>Entire Department</p><span>Use as needed</span></div>`;
+}
+const verdicts=["GUILTY OF BEING A JERK. Sentence: 3 business days of saying “my bad.”","Corrective action: snacks. Lots of snacks. This matter can be resolved with carbohydrates.","The committee recommends a formal apology followed by everyone pretending this never happened.","The accused must stare into a mirror and ask, “Was I the problem?” for 7 seconds.","Case dismissed due to excessive drama and insufficient evidence.","EMOTIONAL DAMAGES AWARDED: one beverage and TV remote control for 30 minutes.","The committee finds that feelings were, in fact, hurt. Unfortunately, the committee has no budget.","Penalty: address the offended party as “Your Honor” until lunch.","Mandatory remedial training in Thinking Before Speaking has been ordered.","The committee has reviewed the allegations and determined that somebody needs to chill."];
+function generateVerdict(){$("verdict").innerHTML="⚖️ <b>OFFICIAL HR VERDICT:</b><br><br>"+verdicts[Math.floor(Math.random()*verdicts.length)];}
+function saveConfig(){config={url:$("sbUrl").value.trim(),key:$("sbKey").value.trim()};localStorage.setItem("hurtFeelingsConfig",JSON.stringify(config));alert(config.url&&config.key?"Settings saved. The HTML is ready for Supabase once the database table/RLS are configured.":"Please enter both values.");render();}
+function clearLocal(){if(confirm("Destroy every locally stored emotional injury on THIS DEVICE?")){reports=[];saveLocal();render();}}
+function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));}
+render();
+</script>
+</body>
+</html>
